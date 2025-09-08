@@ -32,6 +32,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 import userRouter from "./routes/user.routes.js";
 import authRouter from "./routes/auth.routes.js";
+app.get("/", (res, req) => {
+  console.log("hi");
+  
+});
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
 export { app };

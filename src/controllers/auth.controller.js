@@ -7,7 +7,9 @@ import { OAuth2Client } from "google-auth-library";
 const client = new OAuth2Client(process.env.GOOGLE_ANDROID_CLIENT_ID);
 
 const googleSignIn = asyncHandler(async (req, res) => {
+  console.log("omg");
   const { idToken } = req.body;
+  console.log(idToken);
 
   if (!idToken) {
     throw new ApiError(400, "ID Token is required");
@@ -16,7 +18,7 @@ const googleSignIn = asyncHandler(async (req, res) => {
     idToken,
     audience: process.env.GOOGLE_ANDROID_CLIENT_ID,
   });
-
+  
   const payload = ticket.getPayload();
   const googleId = payload["sub"];
   const username = payload["name"];
